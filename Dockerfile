@@ -64,4 +64,4 @@ WORKDIR ${HOME}
 
 COPY run.sh ./jprophet
 
-USER ${USER}
+#USER ${USER}

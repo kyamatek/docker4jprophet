@@ -38,6 +38,15 @@ RUN apt-get update -y && \
     source .bashrc
     #rm -rf /var/lib/apt/lists/*
 
+# install maven3.6.3
+RUN wget https://ftp.riken.jp/net/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz && \
+    tar -xf apache-maven-3.6.3-bin.tar.gz && \
+    mv apache-maven-3.6.3/ apache-maven/ && \
+    mv apache-maven/ /opt/ && \
+    echo 'export MVN_HOME="/opt/apache-maven"' >> /etc/profile.d/maven.sh && \
+    echo 'export PATH="${MVN_HOME}/bin:${PATH}"' >> /etc/profile.d/maven.sh && \
+    source /etc/profile.d/maven.sh
+
 # USER ${USER}
 
 RUN git clone https://github.com/posl/jprophet

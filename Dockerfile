@@ -76,5 +76,10 @@ RUN apt-get install -y sudo && \
 WORKDIR ${HOME} 
 
 COPY run.sh ./jprophet
+COPY random_generator.py ./jprophet
+COPY lines.txt ./jprophet
+COPY d4j /usr/local/bin
+RUN chmod a+x /usr/local/bin/d4j && \
+    mkdir d4j
 
 #USER ${USER}

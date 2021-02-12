@@ -1,0 +1,5 @@
+defects4j checkout -p Math -v $1b -w /home/ubuntu/d4j/math$1
+sed -i -e 's/<maven.compile.source>1.5/<maven.compile.source>1.8/g' /home/ubuntu/d4j/math$1/pom.xml
+sed -i -e 's/<maven.compile.target>1.5/<maven.compile.target>1.8/g' /home/ubuntu/d4j/math$1/pom.xml
+cd /home/ubuntu/d4j/math$1
+mvn test

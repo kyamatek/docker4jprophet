@@ -45,11 +45,15 @@ RUN wget https://ftp.riken.jp/net/apache/maven/maven-3/3.6.3/binaries/apache-mav
     mv apache-maven/ /opt/ && \
     echo 'export MVN_HOME="/opt/apache-maven"' >> /etc/profile.d/maven.sh && \
     echo 'export PATH="${MVN_HOME}/bin:${PATH}"' >> /etc/profile.d/maven.sh && \
-    source /etc/profile.d/maven.sh
+    echo 'source /etc/profile.d/maven.sh' >> .bashrc && \
+    source .bashrc
 
+RUN apt-get install -y python3 python3-pip
 # USER ${USER}
 
-RUN git clone https://github.com/posl/jprophet
+RUN git clone https://github.com/posl/jprophet && \
+    echo "alias jp='cd /home/ubuntu/jprophet/src/main/java/jp/posl/jprophet'" >> .bashrc && \
+    source .bashrc
 
 # ----------- Step 1. Clone defects4j from github --------------
 WORKDIR /
